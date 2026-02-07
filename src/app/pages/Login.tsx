@@ -7,6 +7,7 @@ import { motion } from 'motion/react';
 import { cn } from '../utils';
 import { supabase } from '../../services/supabase';
 import { toast } from 'sonner';
+import logo from '../../assets/logo.svg';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ export const Login = () => {
       <div className="z-10 w-full max-w-sm space-y-8">
         <div className="flex flex-col items-center text-center space-y-2">
           <div className="flex items-center justify-center w-24 h-24 mb-4">
-            <img src="/src/assets/logo.svg" alt="CheckMate Logo" className="w-full h-full object-contain" />
+            <img src={logo} alt="CheckMate Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent">CheckMate</h1>
           <p className="text-muted-foreground text-lg">מערכת בדיקת מבחנים חכמה</p>

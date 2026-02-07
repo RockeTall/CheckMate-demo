@@ -3,6 +3,7 @@ import { User, Bell, LogOut } from 'lucide-react';
 import { Button } from './button';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../../contexts/AuthContext';
+import logo from '../../../assets/logo.svg';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ title, userName: propUserName })
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-6xl items-center justify-between px-4">
         <div className="flex items-center gap-2" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-          <img src="/src/assets/logo.svg" alt="CheckMate" className="h-8 w-8 object-contain" />
+          <img src={logo} alt="CheckMate" className="h-8 w-8 object-contain" />
           <span className="text-xl font-bold tracking-tight">CheckMate</span>
         </div>
 
