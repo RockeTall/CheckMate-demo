@@ -5,6 +5,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Upload, ChevronLeft, BookOpen } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../services/supabase';
+import { gradeToHebrew } from '../utils';
 
 export const StudentHome = () => {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ export const StudentHome = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">{cls.name}</h3>
-                      <p className="text-muted-foreground">שכבה {cls.grade}</p>
+                      <p className="text-muted-foreground">שכבה {gradeToHebrew(cls.grade)}</p>
                     </div>
                   </div>
                   <ChevronLeft className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-transform group-hover:-translate-x-1" />

@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { GraduationCap, School } from 'lucide-react';
 import { motion } from 'motion/react';
-import { cn } from '../utils';
+import { cn, gradeToHebrew } from '../utils';
 import { supabase } from '../../services/supabase';
 import { toast } from 'sonner';
 import logo from '../../assets/logo.svg';
@@ -108,7 +108,7 @@ export const Login = () => {
             <img src={logo} alt="CheckMate Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent">CheckMate</h1>
-          <p className="text-muted-foreground text-lg">מערכת בדיקת מבחנים חכמה</p>
+          <p className="text-muted-foreground text-lg">לומדים איתך בודקים בשבילך</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -170,7 +170,7 @@ export const Login = () => {
                   className="flex h-12 w-full rounded-xl border border-input bg-input-background px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {[7, 8, 9, 10, 11, 12].map(g => (
-                    <option key={g} value={g}>כיתה {g}</option>
+                    <option key={g} value={g}>כיתה {gradeToHebrew(g)}</option>
                   ))}
                 </select>
               </div>

@@ -7,6 +7,7 @@ import { User, Bell, LogOut, Database } from 'lucide-react';
 import { supabase } from '../../services/supabase';
 import { toast } from 'sonner';
 import { seedDemoData } from '../../services/seed';
+import { gradeToHebrew } from '../utils';
 
 export const Profile = () => {
     const { profile, signOut } = useAuth();
@@ -96,7 +97,7 @@ export const Profile = () => {
                         <div className="space-y-4">
                             <Input label="שם מלא" value={profile?.full_name || ''} readOnly className="bg-muted/50" />
                             {profile?.role === 'student' && (
-                                <Input label="כיתה" value={`כיתה ${profile.grade}`} readOnly className="bg-muted/50" />
+                                <Input label="כיתה" value={`כיתה ${gradeToHebrew(profile.grade ?? 10)}`} readOnly className="bg-muted/50" />
                             )}
                         </div>
                     </CardContent>

@@ -6,6 +6,7 @@ import { Plus, Users, Upload, Bell, GraduationCap } from 'lucide-react';
 import { StatusChip } from '../components/ui/StatusChip';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../services/supabase';
+import { gradeToHebrew } from '../utils';
 
 export const TeacherHome = () => {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ export const TeacherHome = () => {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="font-bold text-xl">{cls.name}</h3>
-                      <p className="text-muted-foreground">שכבה {cls.grade}</p>
+                      <p className="text-muted-foreground">שכבה {gradeToHebrew(cls.grade)}</p>
                     </div>
                     <div className="bg-primary/10 text-primary p-2 rounded-lg">
                       <Users className="h-5 w-5" />

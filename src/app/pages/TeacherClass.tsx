@@ -6,6 +6,7 @@ import { ArrowRight, FileText, BarChart3, Plus, Trash2 } from 'lucide-react';
 import { supabase } from '../../services/supabase';
 import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
+import { gradeToHebrew } from '../utils';
 
 export const TeacherClass = () => {
   const { classId } = useParams();
@@ -143,7 +144,7 @@ export const TeacherClass = () => {
       <div className="flex justify-between items-start">
         <div>
           <h1 className="text-2xl font-bold">{classData.name}</h1>
-          <p className="text-muted-foreground">שכבה {classData.grade}</p>
+          <p className="text-muted-foreground">שכבה {gradeToHebrew(classData.grade)}</p>
         </div>
         <div className="flex gap-2">
           <Button variant="destructive" onClick={handleDeleteClass} disabled={isDeleting} className="gap-2 bg-red-500 hover:bg-red-600 text-white">

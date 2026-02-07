@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { ArrowRight, BrainCircuit, CheckCircle2, AlertCircle, TrendingUp, Loader2 } from 'lucide-react';
-import { cn } from '../utils';
+import { cn, gradeToHebrew } from '../utils';
 import { supabase } from '../../services/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -93,7 +93,7 @@ export const StudentExamAnalysis = () => {
       <div className="space-y-2">
         <h1 className="text-xl font-bold">{exam.name}</h1>
         <div className="flex items-center justify-between">
-          <span className="text-muted-foreground">שכבה {exam.grade || 'יא'}</span>
+          <span className="text-muted-foreground">שכבה {gradeToHebrew(exam.grade) || "י״א"}</span>
           <span className="text-sm text-muted-foreground">{new Date(submission.submitted_at).toLocaleDateString('he-IL')}</span>
         </div>
       </div>

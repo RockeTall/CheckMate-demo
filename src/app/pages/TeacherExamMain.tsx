@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { ArrowRight, BrainCircuit, User, Settings, Send, Save, Loader2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, BrainCircuit, User, Settings, Send, Save, Loader2, CheckCircle2, Upload, X, FileText, Camera } from 'lucide-react';
 import { cn } from '../utils';
 import { supabase } from '../../services/supabase';
 import { toast } from 'sonner';
@@ -30,6 +30,11 @@ export const TeacherExamMain = () => {
   const [questionsText, setQuestionsText] = useState('');
   const [rubricText, setRubricText] = useState('');
   const [saving, setSaving] = useState(false);
+
+  // Questions Sheet Upload State (for separate_sheet mode)
+  const [questionsFiles, setQuestionsFiles] = useState<File[]>([]);
+  const [questionsPreviews, setQuestionsPreviews] = useState<string[]>([]);
+  const [scanningQuestions, setScanningQuestions] = useState(false);
 
   useEffect(() => {
     if (!examId) return;
@@ -161,6 +166,66 @@ export const TeacherExamMain = () => {
       toast.error('שגיאה בשמירה: ' + error.message);
     } finally {
       setSaving(false);
+    }
+  };
+
+  // Handle questions sheet file upload
+  const handleQuestionsFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setQuestionsFiles(prev => [...prev, ...newFiles]);
+      const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+      setQuestionsPreviews(prev => [...prev, ...newPreviews]);
+    }
+  };
+
+  const removeQuestionsFile = (index: number) => {
+    setQuestionsFiles(prev => prev.filter((_, i) => i !== index));
+    setQuestionsPreviews(prev => {
+      URL.revokeObjectURL(prev[index]);
+      return prev.filter((_, i) => i !== index);
+    });
+  };
+
+  // Scan uploaded questions sheet with AI
+  const handleScanQuestions = async () => {
+    if (questionsFiles.length === 0) {
+      toast.error('נא להעלות תמונות של גיליון השאלות');
+      return;
+    }
+
+    setScanningQuestions(true);
+    const toastId = toast.loading('סורק את גיליון השאלות...');
+
+    try {
+      // Convert files to base64
+      const imagePromises = questionsFiles.map(file => {
+        return new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      });
+
+      const base64Images = await Promise.all(imagePromises);
+
+      // Use GeminiScanner to extract questions
+      const extractedQuestions = await GeminiScanner.extractQuestionsFromSheet(base64Images, (status) => {
+        toast.loading(status, { id: toastId });
+      });
+
+      if (extractedQuestions && extractedQuestions.length > 0) {
+        setQuestionsText(JSON.stringify(extractedQuestions, null, 2));
+        toast.success(`נמצאו ${extractedQuestions.length} שאלות!`, { id: toastId });
+      } else {
+        toast.error('לא הצלחתי לזהות שאלות בתמונות', { id: toastId });
+      }
+    } catch (error: any) {
+      console.error('Questions scan error:', error);
+      toast.error('שגיאה בסריקת השאלות: ' + error.message, { id: toastId });
+    } finally {
+      setScanningQuestions(false);
     }
   };
 
@@ -516,6 +581,74 @@ export const TeacherExamMain = () => {
                     </label>
                   </div>
                 </div>
+
+                {/* Questions Sheet Upload - Only for Separate Sheet Mode */}
+                {exam.exam_type === 'separate_sheet' && (
+                  <div className="mt-4 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-4">
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-amber-600" />
+                      <div>
+                        <h4 className="font-semibold text-amber-800">גיליון השאלות</h4>
+                        <p className="text-xs text-amber-700">העלה תמונות של גיליון השאלות כדי שה-AI יוכל לקשר בין השאלות לתשובות התלמידים</p>
+                      </div>
+                    </div>
+
+                    {/* Upload Area */}
+                    <div className="border-2 border-dashed border-amber-500/30 rounded-xl p-4 text-center hover:bg-amber-500/5 transition-colors cursor-pointer relative">
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                        onChange={handleQuestionsFileChange}
+                      />
+                      <div className="flex flex-col items-center gap-2 text-amber-700">
+                        <div className="h-10 w-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+                          <Camera className="h-5 w-5" />
+                        </div>
+                        <span className="text-sm font-medium">לחץ להעלאת תמונות גיליון השאלות</span>
+                        <span className="text-xs text-amber-600">JPG, PNG - ניתן להעלות מספר תמונות</span>
+                      </div>
+                    </div>
+
+                    {/* Preview Grid */}
+                    {questionsPreviews.length > 0 && (
+                      <div className="grid grid-cols-3 gap-2">
+                        {questionsFiles.map((file, i) => (
+                          <div key={`${file.name}-${i}`} className="relative group aspect-[3/4] rounded-lg overflow-hidden border border-amber-500/30 bg-muted/30">
+                            <img src={questionsPreviews[i]} alt={file.name} className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <button
+                                type="button"
+                                onClick={() => removeQuestionsFile(i)}
+                                className="p-1.5 bg-destructive text-destructive-foreground rounded-full hover:scale-110 transition-transform"
+                              >
+                                <X className="h-3 w-3" />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Scan Button */}
+                    {questionsFiles.length > 0 && (
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        className="w-full gap-2 bg-amber-500 hover:bg-amber-600 text-white"
+                        onClick={handleScanQuestions}
+                        disabled={scanningQuestions}
+                      >
+                        {scanningQuestions ? (
+                          <><Loader2 className="h-4 w-4 animate-spin" /> סורק שאלות...</>
+                        ) : (
+                          <><BrainCircuit className="h-4 w-4" /> סרוק שאלות עם AI</>
+                        )}
+                      </Button>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Questions */}

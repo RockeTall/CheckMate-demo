@@ -7,7 +7,7 @@ import { ArrowRight, Check, User, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '../../services/supabase';
 import { useAuth } from '../../contexts/AuthContext';
-import { cn } from '../utils';
+import { cn, gradeToHebrew } from '../utils';
 
 export const TeacherAddClass = () => {
   const navigate = useNavigate();
@@ -161,7 +161,7 @@ export const TeacherAddClass = () => {
                 className="flex h-12 w-full rounded-xl border border-input bg-input-background px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {[7, 8, 9, 10, 11, 12].map(g => (
-                  <option key={g} value={g}>כיתה {g}</option>
+                  <option key={g} value={g}>כיתה {gradeToHebrew(g)}</option>
                 ))}
               </select>
             </div>
@@ -173,7 +173,7 @@ export const TeacherAddClass = () => {
             <div className="flex items-center justify-between">
               <h3 className="font-semibold flex items-center gap-2">
                 <User className="h-5 w-5 text-primary" />
-                תלמידים משכבה {grade}
+                תלמידים משכבה {gradeToHebrew(grade)}
               </h3>
               <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
                 {selectedStudents.length} נבחרו

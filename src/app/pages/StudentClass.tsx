@@ -7,6 +7,7 @@ import { ArrowRight, BrainCircuit, FileText } from 'lucide-react';
 import { supabase } from '../../services/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { toast } from 'sonner';
+import { gradeToHebrew } from '../utils';
 
 export const StudentClass = () => {
   const { classId } = useParams();
@@ -103,7 +104,7 @@ export const StudentClass = () => {
 
       <div>
         <h1 className="text-2xl font-bold">{classData.name}</h1>
-        <p className="text-muted-foreground">שכבה {classData.grade}</p>
+        <p className="text-muted-foreground">שכבה {gradeToHebrew(classData.grade)}</p>
       </div>
 
       <div className="space-y-4">

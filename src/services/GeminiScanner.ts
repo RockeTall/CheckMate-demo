@@ -415,5 +415,81 @@ export const GeminiScanner = {
             console.error('Extract Graded Exam Error:', error);
             throw error;
         }
+    },
+
+    // Extract questions from a separate questions sheet
+    async extractQuestionsFromSheet(base64Images: string[], onProgress?: (status: string) => void) {
+        if (!API_KEY) throw new Error("Missing VITE_GEMINI_API_KEY");
+
+        try {
+            onProgress?.('מנתח תמונות גיליון השאלות...');
+
+            const genAI = new GoogleGenerativeAI(API_KEY);
+            const model = genAI.getGenerativeModel({ model: MODEL_OCR });
+
+            // Convert base64 strings to image parts
+            const imageParts = base64Images.map(base64 => {
+                // Handle data URLs (data:image/jpeg;base64,...)
+                const parts = base64.split(',');
+                const mimeMatch = parts[0]?.match(/data:([^;]+);/);
+                const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+                const data = parts.length > 1 ? parts[1] : base64;
+
+                return {
+                    inlineData: { data, mimeType }
+                };
+            });
+
+            const prompt = `
+            **Role:** You are an expert Hebrew OCR system specialized in extracting exam questions.
+            **Task:** Analyze the provided exam sheet image(s) and extract ALL questions.
+
+            **Instructions:**
+            1. Identify each question by its number (1, 2, 3... or א, ב, ג...)
+            2. Extract the FULL text of each question (Hebrew)
+            3. If you see point values (e.g., "20 נקודות", "(10 נק')"), extract them
+            4. Maintain the original order of questions
+
+            **Output Format (Strict JSON Array):**
+            \`\`\`json
+            [
+              {
+                "number": 1,
+                "text": "Full question text in Hebrew...",
+                "points": 20
+              },
+              {
+                "number": 2,
+                "text": "Another question text...",
+                "points": 15
+              }
+            ]
+            \`\`\`
+
+            **Important:**
+            - Return ONLY valid JSON array, no markdown
+            - If points are not visible, estimate based on question complexity (default: 10)
+            - Preserve Hebrew text exactly as written
+            - Include sub-questions if present (e.g., 1א, 1ב as separate items or combined)
+            `;
+
+            onProgress?.('מפענח שאלות...');
+
+            const result = await model.generateContent([prompt, ...imageParts]);
+            const response = await result.response;
+            const text = response.text();
+
+            // Parse JSON
+            const jsonStr = text.replace(/```json/g, '').replace(/```/g, '').trim();
+            const questions = JSON.parse(jsonStr);
+
+            onProgress?.('השאלות נמצאו בהצלחה!');
+
+            return Array.isArray(questions) ? questions : [];
+
+        } catch (error) {
+            console.error('Extract Questions Error:', error);
+            throw error;
+        }
     }
 };
