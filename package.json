@@ -4,9 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "chmod +x ./node_modules/.bin/vite && vite build",
-    "preview": "vite preview"
+        "build": "npx vite build"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
