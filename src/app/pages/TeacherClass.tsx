@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Card, CardContent } from '../components/ui/Card';
+import { Card, CardContent } from '../components/ui/card';
 import { StatusChip } from '../components/ui/StatusChip';
 import { ArrowRight, FileText, BarChart3, Plus, Trash2 } from 'lucide-react';
 import { supabase } from '../../services/supabase';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 
 export const TeacherClass = () => {
@@ -65,7 +65,7 @@ export const TeacherClass = () => {
 
     try {
       // Create exam in database
-      const { data: newExam, error } = await supabase
+      const { error } = await supabase
         .from('exams')
         .insert({
           name: examName,

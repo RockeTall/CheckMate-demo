@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Card, CardContent } from '../components/ui/card';
 import { ArrowRight, Check, User, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '../../services/supabase';
@@ -16,9 +16,6 @@ export const TeacherAddClass = () => {
   const [loading, setLoading] = useState(false);
   const [className, setClassName] = useState('');
   const [grade, setGrade] = useState<number>(10);
-  const [subject, setSubject] = useState(''); // Note: Subject isn't in DB schema yet? Prompt said "name, grade". We can put subject in name or add column. Let's assume Name includes subject or just use Name.
-  // Prompt SQL: name TEXT, grade INTEGER.
-  // I will concatenate Subject to Name or just use Name.
 
   const [availableStudents, setAvailableStudents] = useState<any[]>([]);
   const [selectedStudents, setSelectedStudents] = useState<string[]>([]);

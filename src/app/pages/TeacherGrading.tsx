@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Card, CardContent } from '../components/ui/card';
 import { ArrowRight, BrainCircuit, Edit2, Check, Loader2 } from 'lucide-react';
 import { GeminiScanner, GradedQuestion } from '../../services/GeminiScanner';
 import { supabase } from '../../services/supabase';

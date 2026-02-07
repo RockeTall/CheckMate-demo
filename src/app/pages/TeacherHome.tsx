@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
 import { Plus, Users, Upload, Bell, GraduationCap } from 'lucide-react';
 import { StatusChip } from '../components/ui/StatusChip';
 import { useAuth } from '../../contexts/AuthContext';

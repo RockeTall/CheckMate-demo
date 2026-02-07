@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { supabase } from '../../services/supabase';
 import { Loader2, Camera, X, Upload } from 'lucide-react';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 
 export const StudentExamUpload = () => {

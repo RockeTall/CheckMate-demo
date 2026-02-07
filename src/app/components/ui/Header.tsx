@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldCheck, User, Menu, Bell, LogOut, Settings } from 'lucide-react';
-import { Button } from './Button';
+import { User, Bell, LogOut } from 'lucide-react';
+import { Button } from './button';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../../contexts/AuthContext';
 import {

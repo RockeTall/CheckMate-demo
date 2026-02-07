@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Card, CardContent } from '../components/ui/card';
 import { classes } from '../data';
-import { ArrowRight, UploadCloud, X, FileImage } from 'lucide-react';
+import { ArrowRight, UploadCloud, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { motion, AnimatePresence } from 'motion/react';

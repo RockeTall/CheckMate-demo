@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ArrowRight, BrainCircuit, User, Settings, Send, Save, Loader2, CheckCircle2 } from 'lucide-react';
 import { cn } from '../utils';
 import { supabase } from '../../services/supabase';

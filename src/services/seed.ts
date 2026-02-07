@@ -36,7 +36,7 @@ export const seedDemoData = async (userId: string, role: 'teacher' | 'student') 
                 { number: 3, text: "תאר את מהלך קרב סטלינגרד וחשיבותו.", points: 40 }
             ];
 
-            const { data: newExam, error: examError } = await supabase
+            const { error: examError } = await supabase
                 .from('exams')
                 .insert({
                     class_id: newClass.id,

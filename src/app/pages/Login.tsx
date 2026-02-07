@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { ShieldCheck, GraduationCap, School } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { GraduationCap, School } from 'lucide-react';
+import { motion } from 'motion/react';
 import { cn } from '../utils';
 import { supabase } from '../../services/supabase';
 import { toast } from 'sonner';
