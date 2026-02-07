@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8e2de2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a00e0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Graduation Cap / Head -->
+  <path d="M100 40 L140 60 L100 80 L60 60 Z" fill="#7B1FA2" />
+  <circle cx="100" cy="90" r="25" fill="#7B1FA2" />
+  
+  <!-- Abstract Body / Arms -->
+  <path d="M50 80 C50 80 60 130 100 150 C140 130 150 80 150 80 L130 80 C130 80 120 110 100 120 C80 110 70 80 70 80 Z" fill="url(#grad1)" />
+  
+  <!-- Tie -->
+  <path d="M95 120 L100 150 L105 120 Z" fill="#fff" />
+  
+  <!-- Stars -->
+  <path d="M100 20 L103 28 L112 28 L105 34 L108 42 L100 36 L92 42 L95 34 L88 28 L97 28 Z" fill="#7B1FA2" />
+  <path d="M70 30 L72 35 L78 35 L73 39 L75 44 L70 40 L65 44 L67 39 L62 35 L68 35 Z" fill="#7B1FA2" opacity="0.7" />
+  <path d="M130 30 L132 35 L138 35 L133 39 L135 44 L130 40 L125 44 L127 39 L122 35 L128 35 Z" fill="#7B1FA2" opacity="0.7" />
+
+  <!-- Side Lines -->
+  <rect x="20" y="100" width="30" height="4" rx="2" fill="#4a00e0" />
+  <rect x="25" y="110" width="25" height="4" rx="2" fill="#4a00e0" opacity="0.8" />
+  <rect x="30" y="120" width="20" height="4" rx="2" fill="#4a00e0" opacity="0.6" />
+
+  <rect x="150" y="100" width="30" height="4" rx="2" fill="#4a00e0" />
+  <rect x="150" y="110" width="25" height="4" rx="2" fill="#4a00e0" opacity="0.8" />
+  <rect x="150" y="120" width="20" height="4" rx="2" fill="#4a00e0" opacity="0.6" />
+</svg>

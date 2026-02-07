@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+body {
+  direction: ltr;
+  /* Default Ltr, but we will use rtl for specific containers */
+  background-color: #f3f4f6;
+  /* gray-100 */
+}

@@ -1,0 +1,56 @@
+{
+    "file_name": "new_doc_136_5.jpg",
+    "extracted_text_elements": [
+        {
+            "text": "ב. לפניך שני משפטים.",
+            "type": "question_header",
+            "location": "top_right",
+            "confidence": 99
+        },
+        {
+            "text": "I. בני האדם זקוקים לתנאים מסוימים כדי להתקיים.",
+            "type": "question_text",
+            "confidence": 98
+        },
+        {
+            "text": "II. בתנאים אלה נכללים טווח טמפרטורות מצומצם, לחץ אטמוספרי מתאים, אוויר ראוי לנשימה ועוד.",
+            "type": "question_text",
+            "confidence": 98
+        },
+        {
+            "text": "כתוב את שני המשפטים במשפט אחד פשוט, שיהיה בו ביטוי מכליל ופירוט.",
+            "type": "instruction",
+            "confidence": 99
+        },
+        {
+            "text": "בני האדם זקוקים לתנאים מסוימים כדי להתקיים: טווח טמפרטורות מצומצם, לחץ אטמוספרי מתאים, אוויר ראוי לנשימה.",
+            "type": "student_answer",
+            "location": "middle",
+            "confidence": 92,
+            "handwriting_quality": "good"
+        },
+        {
+            "text": "ג. לפניך משפט בעל חלק כולל.",
+            "type": "question_header",
+            "location": "middle_right",
+            "confidence": 99
+        },
+        {
+            "text": "גידולים חקלאיים בגן ירק בבית הספר, בישול במטבח ואכילה משותפת הם התנסויות שבכוחן לחנך לערכים בתחום התזונה.",
+            "type": "question_text",
+            "confidence": 98
+        },
+        {
+            "text": "הוכח טענה זו על פי המשפט הנתון.",
+            "type": "instruction",
+            "confidence": 99
+        },
+        {
+            "text": "הוכחה: הנשוא במשפט הוא המילה 'התנסויות'. לנשוא זה ישנם שלושה נושאים, ולכן ניתן לפרק את המשפט לשלושה משפטים פשוטים.",
+            "type": "student_answer",
+            "location": "bottom",
+            "confidence": 88,
+            "handwriting_quality": "average"
+        }
+    ]
+}

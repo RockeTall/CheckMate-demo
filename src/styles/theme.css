@@ -1,0 +1,107 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Default to Dark Mode values */
+  --background: #0B1021;
+  /* Deep Navy */
+  --foreground: #F8FAFC;
+  --card: #151E32;
+  --card-foreground: #F8FAFC;
+  --popover: #151E32;
+  --popover-foreground: #F8FAFC;
+  --primary: #1E40AF;
+  /* Navy Blue */
+  --primary-foreground: #FFFFFF;
+  --secondary: #A78BFA;
+  /* Lilac */
+  --secondary-foreground: #0B1021;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #A78BFA;
+  /* Lilac */
+  --accent-foreground: #0B1021;
+  --destructive: #9F1239;
+  /* Bordo */
+  --destructive-foreground: #FFFFFF;
+  --border: #334155;
+  --input: #1E293B;
+  --input-background: #1E293B;
+  --ring: #A78BFA;
+
+  --radius: 0.75rem;
+
+  --font-size: 16px;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* Chart colors */
+  --chart-1: #A78BFA;
+  --chart-2: #818CF8;
+  --chart-3: #34D399;
+  --chart-4: #F472B6;
+  --chart-5: #FBBF24;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Heebo', sans-serif;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+}

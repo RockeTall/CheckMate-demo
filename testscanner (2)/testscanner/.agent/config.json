@@ -1,0 +1,12 @@
+{
+    "GEMINI_API_KEY": "YOUR_KEY_HERE",
+    "GEMINI_OCR_MODEL": "gemini-3-flash-preview",
+    "GEMINI_SCORING_MODEL": "gemini-3-pro-preview",
+    "CONFIDENCE_THRESHOLD": 70,
+    "SCORE_DISAGREEMENT_THRESHOLD": 15,
+    "OUTPUT_FORMATS": [
+        "json",
+        "html",
+        "markdown"
+    ]
+}

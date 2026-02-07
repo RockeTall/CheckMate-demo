@@ -1,0 +1,23 @@
+{
+    "exam_id": "doc_136_5",
+    "final_scores": [
+        {
+            "question_id": "b",
+            "gemini_weighted": 80.0,
+            "chatgpt_weighted": 19.0,
+            "ensemble_score": 99.0,
+            "confidence": "high",
+            "status": "finalized"
+        },
+        {
+            "question_id": "g",
+            "gemini_weighted": 80.0,
+            "chatgpt_weighted": 20.0,
+            "ensemble_score": 100.0,
+            "confidence": "high",
+            "status": "finalized"
+        }
+    ],
+    "exam_total_score": 99.5,
+    "summary": "High agreement between models. Student demonstrated strong understanding of syntactic structures."
+}

@@ -1,0 +1,36 @@
+{
+    "exam_id": "doc_136_5",
+    "gemini_scoring": [
+        {
+            "question_id": "b",
+            "score": 100,
+            "max_points": 100,
+            "reasoning": "The student correctly created a simple sentence with a generalizing expression ('certain conditions') followed by a colon and the specified details. Grammatically correct and follows instructions.",
+            "feedback": "Excellent use of punctuation and structure to create the generalizing expression."
+        },
+        {
+            "question_id": "g",
+            "score": 100,
+            "max_points": 100,
+            "reasoning": "The proof is precise. The student correctly identified the shared predicate ('experiences') and the multiple subjects ('crops', 'cooking', 'eating'), which is the definition of a sentence with homogeneous parts.",
+            "feedback": "Very clear logical proof using syntactic analysis."
+        }
+    ],
+    "chatgpt_scoring": [
+        {
+            "question_id": "b",
+            "score": 95,
+            "max_points": 100,
+            "reasoning": "The answer is correct and flows well. I deducted 5 points (minor) because 'certain conditions' could be more specific, but accepted it as a valid generalizing expression.",
+            "feedback": "Good construction. Make sure the generalizing term is broad enough."
+        },
+        {
+            "question_id": "g",
+            "score": 100,
+            "max_points": 100,
+            "reasoning": "Correct identification of the subject-predicate relationship. The explanation is sound.",
+            "feedback": "Correct."
+        }
+    ],
+    "disagreements": []
+}

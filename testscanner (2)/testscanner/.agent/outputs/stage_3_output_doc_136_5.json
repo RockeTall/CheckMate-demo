@@ -1,0 +1,21 @@
+{
+    "source_file": "stage_2_output_doc_136_5.json",
+    "exam_id": "doc_136_5",
+    "mapped_answers": [
+        {
+            "question_id": "b",
+            "question_label": "ב",
+            "question_text": "כתוב את שני המשפטים במשפט אחד פשוט, שיהיה בו ביטוי מכליל ופירוט.",
+            "student_answer_text": "בני האדם זקוקים לתנאים מסוימים כדי להתקיים: טווח טמפרטורות מצומצם, לחץ אטמוספרי מתאים, אוויר ראוי לנשימה.",
+            "is_valid_map": true
+        },
+        {
+            "question_id": "g",
+            "question_label": "ג",
+            "question_text": "הוכח טענה זו על פי המשפט הנתון.",
+            "student_answer_text": "הוכחה: הנשוא במשפט הוא המילה 'התנסויות'. לנשוא זה ישנם שלושה נושאים, ולכן ניתן לפרק את המשפט לשלושה משפטים פשוטים.",
+            "is_valid_map": true
+        }
+    ],
+    "unmapped_elements": []
+}

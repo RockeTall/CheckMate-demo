@@ -1,0 +1,47 @@
+# Exam Checkmate Implementation Checklist
+
+- [x] **Phase 1: Setup & Configuration**
+    - [x] Explore existing workspace structure
+    - [x] Create `implementation_plan.md`
+    - [x] Create `.agent/workflows/` directory
+    - [x] Create `.agent/config.json` (or equivalent) for API keys/settings
+    - [x] Configure `.agent/rules` with Master System Prompt
+- [x] **Phase 2: Workflow Creation**
+    - [x] Create `exam_checkmate_main.md` (Orchestrator)
+    - [x] Create `stage_2_hebrew_ocr.md` (OCR & Text Extraction)
+    - [x] Create `stage_3_document_analysis.md` (Doc Analysis)
+    - [x] Create `stage_4_dual_model_scoring.md` (Refactored to Gemini Only)
+    - [x] Create `stage_5_ensemble_aggregation.md` (Removed)
+    - [x] Create `stage_6_report_generation.md` (Reporting)
+- [x] **Phase 3: Integration & Testing (Simulated)**
+    - [x] Verify workflow file existence and content
+    - [x] Create dummy artifacts to simulate workflow execution
+- [x] **Phase 4: Active Testing & Validation**
+    - [x] Create `exam_samples/` directory for test inputs
+    - [x] Create `active_testing_guide.md` (Instructions for Phase 2)
+    - [x] Create `test_results_log.md` (Template for recording validation)
+    - [x] (Pending User) Run first end-to-end test
+- [x] **Phase 5: Advanced Features & Refinements**
+    - [x] **Stage 4**: Implement Cascading Error Handling (Section 5.1)
+    - [x] **Stage 5**: Implement Adaptive Confidence Thresholding (Section 5.2)
+    - [x] **Stage 2**: Enhance Hebrew HTR prompts (Section 6.1)
+    - [x] **Configuration**: Enforce Gemini 3 Flash/Pro models (User Request)
+    - [x] **Stage 3**: Improve Non-Sequential Answer Logic (Section 6.2)
+    - [x] **Stage 3**: Refine Teacher Annotation Detection (Section 6.3)
+- [x] **Phase 6: Analytics & Monitoring**
+    - [x] Create `comparative_analysis.md` workflow (Section 5.3)
+    - [x] Define "Cohort Analysis" output format
+- [x] **Phase 7: Frontend Development**
+    - [x] Initialize React + Tailwind project
+    - [x] Create `GradingResultsPage` component (First Task)
+    - [x] Create `ExamUploader` component
+        - [x] Implement File Drag & Drop
+        - [x] Implement Rubric Toggle (File vs Text)
+    - [ ] Implement Dashboard Layout (RTL support)
+- [x] **Phase 8: Backend API Service**
+    - [x] Initialize Node.js/Express server
+    - [x] Implement `POST /api/grade` endpoint
+    - [x] Implement Stage 2 Logic (Gemini Flash OCR)
+    - [x] Implement Stage 4 Logic (Gemini Scoring)
+    - [x] Connect Frontend `ExamUploader` to Backend API
+    - [x] **Refactor**: Remove ChatGPT dependencies (Gemini Only)
