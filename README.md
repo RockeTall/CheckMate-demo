@@ -1,7 +1,7 @@
 
-  # Futuristic Dark Mode App
+  # CheckMate
 
-  This is a code bundle for Futuristic Dark Mode App. The original project is available at https://www.figma.com/design/3lL8z2my6dJ7A93g2GDoyN/Futuristic-Dark-Mode-App.
+  This is a code bundle for CheckMate. created with Anti Gravity for StartCup edu-il competition
 
   ## Running the code
 
